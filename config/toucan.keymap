@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#define JP_ZKHK  GRAVE        // Zenkaku ↔ Hankaku ↔ Kanji (半角 ↔ 全角 ↔ 漢字)
 
 #define BASE 0
 #define NAV  1
