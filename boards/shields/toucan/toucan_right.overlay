@@ -62,8 +62,10 @@
         spi-max-frequency = <1000000>;
         status = "okay";
         dr-gpios = <&gpio0 2 (GPIO_ACTIVE_HIGH)>;
-        sensitivity = "2x";
+        sensitivity = "3x"; // 2x feels too jumpy IMO
         x-invert;
+        y-invert; // needed for abs mode?  not sure why it wasn't needed in relative
+        abs-rel-divisor = <1>;
 
         // Optional: turning this on enables very aggressive power saving, after 5 seconds with no touches
         // the trackpad will go to sleep.  It wakes up on touch, but there is a ~300ms delay.  Most users will find
