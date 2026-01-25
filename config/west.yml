@@ -16,7 +16,7 @@ manifest:
       import: app/west.yml
     - name: cirque-input-module
       remote: geeksville
-      revision: toucan
+      revision: main
     - name: zmk-rgbled-widget
       remote: caksoylar
       revision: main
