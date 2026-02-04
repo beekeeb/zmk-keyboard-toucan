@@ -161,7 +161,7 @@
                 &trans  &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &trans
                 &trans  &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &trans
                 &trans  &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &trans
-                        &kp LG &lt NAV LC &mt LS SPACE    &mt RS RET  &lt SYM RC  &kp RA
+                            &kp LG &mo 1 &mt LS SPACE   &mt LC RET &mo 2 &kp RA
             >;
         };
 
@@ -171,7 +171,7 @@
                 &trans  &trans  &trans  &trans    &trans    &trans      &kp HOME &kp PG_DN  &kp PG_UP &kp END   &trans &trans
                 &trans  &trans  &trans  &trans    &trans    &trans      &kp LEFT &kp DOWN   &kp UP    &kp RIGHT &trans &trans
                 &trans  &trans  &trans  &kp LBRC  &kp LPAR  &kp LBKT    &kp RBKT &kp RPAR   &kp RBRC  &trans    &trans &trans
-                                  &kp LG &lt NAV LC &mt LS SPACE          &mt RS RET  &lt SYM RC  &kp RA
+                                        &kp LG &mo 1 &mt LS SPACE       &mt LC RET &mo 2 &kp RA
             >;
         };
 
@@ -181,7 +181,7 @@
                 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                                  &kp LG &lt NAV LC &mt LS SPACE    &mt RS RET  &lt SYM RC  &kp RA
+                                     &kp LG &mo 1 &mt LS SPACE    &mt LC RET &mo 2 &kp RA
             >;
         };
 
@@ -191,7 +191,7 @@
                 &trans &trans      &kp F7 &kp F8 &kp F9 &kp F12   &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  &kp C_BRI_UP &kp C_BRI_DN &trans
                 &trans &bootloader &kp F4 &kp F5 &kp F6 &kp F11   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 &bt BT_SEL 4 &trans
                 &trans &sys_reset  &kp F1 &kp F2 &kp F3 &kp F10   &bt BT_CLR    &studio_unlock   &trans     &trans &trans &trans
-                                  &kp LG &lt NAV LC &mt LS SPACE    &mt RS RET  &lt SYM RC  &kp RA
+                                      &kp LG &mo 1 &mt LS SPACE   &mt LC RET &mo 2 &kp RA
             >;
         };
 
