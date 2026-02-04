@@ -6,7 +6,7 @@
 
 #define BASE 0
 #define NAV  1
-#define SYM  2
+#define NUM  2
 #define ADJ  3
 
   /* 位置番号の配置: */
@@ -176,11 +176,11 @@
         };
 
         sym {
-            display-name = "SYM";
+            display-name = "NUM";
             bindings = <
-                &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5    &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans
+                &trans  &kp N1   &kp N2   &kp N3  &kp N4  &kp N5    &kp N6  &kp N7  &kp N8  &kp N9  &kp  N0  &trans
+                &trans  &kp F11  &kp F12  &trans  &trans  &trans    &trans  &trans  &trans  &trans   &trans  &trans
                                  &kp LGUI &mo 1 &mt LSHIFT SPACE    &mt LCTRL RET &mo 2 &kp RALT
             >;
         };
@@ -188,9 +188,9 @@
         adj {
             display-name = "ADJ";
             bindings = <
-                &trans &trans      &kp F7 &kp F8 &kp F9 &kp F12   &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  &kp C_BRI_UP &kp C_BRI_DN &trans
-                &trans &bootloader &kp F4 &kp F5 &kp F6 &kp F11   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 &bt BT_SEL 4 &trans
-                &trans &sys_reset  &kp F1 &kp F2 &kp F3 &kp F10   &bt BT_CLR    &studio_unlock   &trans     &trans &trans &trans
+                &trans &trans      &trans &trans &trans &trans      &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  &kp C_BRI_DN &kp C_BRI_UP &trans
+                &trans &bootloader &trans &trans &trans &trans      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 &bt BT_SEL 4 &trans
+                &trans &sys_reset  &trans &trans &trans &trans      &bt BT_CLR    &studio_unlock   &trans     &trans &trans &trans
                                   &kp LGUI &mo 1 &mt LSHIFT SPACE   &mt LCTRL RET &mo 2 &kp RALT
             >;
         };
