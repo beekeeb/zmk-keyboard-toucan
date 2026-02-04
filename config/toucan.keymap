@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define BASE 0
 #define NAV  1
@@ -149,7 +150,7 @@
             key-positions = <30 31>;
             bindings = <&kp CARET>;
         };
-    }
+    };
 
     keymap {
         compatible = "zmk,keymap";
