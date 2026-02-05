@@ -45,7 +45,7 @@
         };
         combo_mouse_right {
             timeout-ms = <50>;
-            key-positions = <4 5>;
+            key-positions = <1 2>;
             bindings = <&mkp MB2>;
         };
 
@@ -107,7 +107,7 @@
         };
         combo_at {
             timeout-ms = <50>;
-            key-positions = <1 2>;
+            key-positions = <31 32>;
             bindings = <&kp AT>;
         };
         combo_exclamation {
