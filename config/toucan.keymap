@@ -45,14 +45,14 @@
         };
         combo_mouse_right {
             timeout-ms = <50>;
-            key-positions = <1 2>;
+            key-positions = <4 5>;
             bindings = <&mkp MB2>;
         };
 
         // Special Keys
         combo_ESC {
             timeout-ms = <50>;
-            key-positions = <2 3>;
+            key-positions = <1 2>;
             bindings = <&kp ESC>;
         };
         combo_TAB {
