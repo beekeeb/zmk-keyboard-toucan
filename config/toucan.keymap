@@ -210,20 +210,20 @@
         nav {
             display-name = "NAV";
             bindings = <
-                &trans  &trans      &trans  &trans    &trans    &trans    &kp HOME &kp PG_DN  &kp PG_UP &kp END   &trans &trans
-                &sys_reset  &trans  &trans  &trans    &trans    &trans    &kp LEFT &kp DOWN   &kp UP    &kp RIGHT &trans &trans
-                &bootloader &trans  &kp LT  &kp LBRC &kp LPAR &kp LBKT    &kp RBKT &kp RPAR   &kp RBRC  &kp GT    &trans &trans
-                                             &kp LANG2 &mo 1 &kp SPACE    &kp RET &mo 2 &kp LANG1
+                &trans  &trans      &trans  &trans    &trans    &trans       &kp HOME &kp PG_DN  &kp PG_UP &kp END   &trans &trans
+                &sys_reset  &trans  &kp LGUI &kp LALT &kp LSHIFT &kp LCTRL   &kp LEFT &kp DOWN   &kp UP    &kp RIGHT &trans &trans
+                &bootloader &trans  &kp LT  &kp LBRC &kp LPAR &kp LBKT       &kp RBKT &kp RPAR   &kp RBRC  &kp GT    &trans &trans
+                                             &kp LANG2 &mo 1 &kp SPACE       &kp RET &mo 2 &kp LANG1
             >;
         };
 
         sym {
             display-name = "NUM";
             bindings = <
-                &trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5    &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans
-                &trans  &kp N1   &kp N2   &kp N3  &kp N4  &kp N5    &kp N6  &kp N7  &kp N8  &kp N9  &kp  N0  &sys_reset
-                &trans  &kp F11  &kp F12  &trans  &trans  &trans    &trans  &trans  &trans  &trans   &trans  &bootloader
-                                       &kp LANG2 &mo 1 &kp SPACE    &kp RET &mo 2 &kp LANG1
+                &trans &kp F1   &kp F2   &kp F3  &kp F4  &kp F5                                   &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans
+                &trans &kp N1 &hmr_l2 LGUI N2 &hmr_l LALT N3 &hmr_l2 LSHIFT N4 &hmr_l LCTRL N5    &hmr_r RCTRL N6  &hmr_r2 RSHIFT N7  &hmr_r RALT N8 &hmr_r2 RGUI N9 &kp N0 &sys_reset
+                &trans &kp F11  &kp F12  &trans  &trans  &trans                                   &trans  &trans  &trans  &trans   &trans  &bootloader
+                                      &kp LANG2 &mo 1 &kp SPACE                                   &kp RET &mo 2 &kp LANG1
             >;
         };
 
