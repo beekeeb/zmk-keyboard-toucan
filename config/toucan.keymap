@@ -4,10 +4,11 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define BASE 0
-#define NAV  1
-#define NUM  2
-#define ADJ  3
+#define BASE-M 0
+#define BASE-W 1
+#define NAV  2
+#define NUM  3
+#define ADJ  4
 
   /* 位置番号の配置: */
   /*  0  1  2  3  4  5    6  7  8  9 10 11 */
@@ -84,8 +85,8 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
+            if-layers = <2 3>;
+            then-layer = <4>;
         };
     };
 
@@ -123,12 +124,6 @@
             timeout-ms = <50>;
             key-positions = <18 19>;
             bindings = <&kp BSPC>;
-        };
-        combo_zenhankaku {
-            timeout-ms = <50>;
-            key-positions = <13 14>;
-            bindings = <&kp LANG5>;
-            layers = <BASE>;
         };
 
         // Symbol Keys
@@ -192,18 +187,42 @@
             key-positions = <30 31>;
             bindings = <&kp CARET>;
         };
+
+        // Windows Only
+        combo_zenhankaku {
+            timeout-ms = <50>;
+            key-positions = <13 14>;
+            bindings = <&kp LANG5>;
+            layers = <BASE-W>;
+        };
+        combo_win {
+            timeout-ms = <50>;
+            key-positions = <38 39>;
+            bindings = <&kp LGUI>;
+            layers = <BASE-W>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        base {
-            display-name = "BASE";
+        base_m {
+            display-name = "BASE-M";
             bindings = <
                 &trans &kp Q &kp W &kp E &kp R &kp T                                        &kp Y &kp U &kp I     &kp O   &kp P    &trans
                 &trans &kp A &hmr_l2 LGUI S &hmr_l LALT D &hmr_l2 LSHIFT F &hmr_l LCTRL G   &hmr_r RCTRL H &hmr_r2 RSHIFT J &hmr_r RALT K &hmr_r2 RGUI L &kp SEMI &trans
                 &trans &kp Z &kp X &kp C &kp V &kp B                                        &kp N &kp M &kp COMMA &kp DOT &kp FSLH &trans
-                           &kp LANG2 &mo 1 &kp SPACE                                        &kp RET &mo 2 &kp LANG1
+                           &kp LANG2 &mo 2 &kp SPACE                                        &kp RET &mo 3 &kp LANG1
+            >;
+        };
+
+        base_w {
+            display-name = "BASE-W";
+            bindings = <
+                &trans &kp Q &kp W &kp E &kp R &kp T                                        &kp Y &kp U &kp I     &kp O   &kp P    &trans
+                &trans &kp A &kp S &hmr_l LALT D &hmr_l2 LSHIFT F &hmr_l LCTRL G   &hmr_r RCTRL H &hmr_r2 RSHIFT J &hmr_r RALT K &kp L &kp SEMI &trans
+                &trans &kp Z &kp X &kp C &kp V &kp B                                        &kp N &kp M &kp COMMA &kp DOT &kp FSLH &trans
+                           &kp LANG2 &mo 2 &kp SPACE                                        &kp RET &mo 3 &kp LANG1
             >;
         };
 
@@ -213,7 +232,7 @@
                 &trans  &trans      &trans  &trans    &trans    &trans       &kp HOME &kp PG_DN  &kp PG_UP &kp END   &trans &trans
                 &sys_reset  &trans  &kp LGUI &kp LALT &kp LSHIFT &kp LCTRL   &kp LEFT &kp DOWN   &kp UP    &kp RIGHT &trans &trans
                 &bootloader &trans  &kp LT  &kp LBRC &kp LPAR &kp LBKT       &kp RBKT &kp RPAR   &kp RBRC  &kp GT    &trans &trans
-                                             &kp LANG2 &mo 1 &kp SPACE       &kp RET &mo 2 &kp LANG1
+                                             &kp LANG2 &mo 2 &kp SPACE       &kp RET &mo 3 &kp LANG1
             >;
         };
 
@@ -223,17 +242,17 @@
                 &trans &kp F1   &kp F2   &kp F3  &kp F4  &kp F5                                   &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans
                 &trans &kp N1 &hmr_l2 LGUI N2 &hmr_l LALT N3 &hmr_l2 LSHIFT N4 &hmr_l LCTRL N5    &hmr_r RCTRL N6  &hmr_r2 RSHIFT N7  &hmr_r RALT N8 &hmr_r2 RGUI N9 &kp N0 &sys_reset
                 &trans &kp F11  &kp F12  &trans  &trans  &trans                                   &trans  &trans  &trans  &trans   &trans  &bootloader
-                                      &kp LANG2 &mo 1 &kp SPACE                                   &kp RET &mo 2 &kp LANG1
+                                      &kp LANG2 &mo 2 &kp SPACE                                   &kp RET &mo 3 &kp LANG1
             >;
         };
 
         adj {
             display-name = "ADJ";
             bindings = <
-                &trans &trans &trans &trans &trans &trans  &kp C_VOL_DN   &kp C_MUTE    &kp C_VOL_UP  &kp C_BRI_DN &kp C_BRI_UP &trans
+                &tog 1 &trans &trans &trans &trans &trans  &kp C_VOL_DN   &kp C_MUTE    &kp C_VOL_UP  &kp C_BRI_DN &kp C_BRI_UP &trans
                 &trans &trans &trans &trans &trans &trans  &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 &bt BT_SEL 4 &trans
                 &trans &trans &trans &trans &trans &trans  &bt BT_CLR     &studio_unlock   &trans     &trans  &trans
-                                              &kp LANG2 &mo 1 &kp SPACE   &kp RET &mo 2 &kp LANG1
+                                              &kp LANG2 &mo 2 &kp SPACE   &kp RET &mo 3 &kp LANG1
             >;
         };
 
