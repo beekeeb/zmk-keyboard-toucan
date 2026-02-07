@@ -4,8 +4,8 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define BASE-M 0
-#define BASE-W 1
+#define BASE_M 0
+#define BASE_W 1
 #define NAV  2
 #define NUM  3
 #define ADJ  4
@@ -193,13 +193,13 @@
             timeout-ms = <50>;
             key-positions = <13 14>;
             bindings = <&kp LANG5>;
-            layers = <BASE-W>;
+            layers = <BASE_W>;
         };
         combo_win {
             timeout-ms = <50>;
             key-positions = <38 39>;
             bindings = <&kp LGUI>;
-            layers = <BASE-W>;
+            layers = <BASE_W>;
         };
     };
 
@@ -207,7 +207,7 @@
         compatible = "zmk,keymap";
 
         base_m {
-            display-name = "BASE-M";
+            display-name = "BASE_M";
             bindings = <
                 &trans &kp Q &kp W &kp E &kp R &kp T                                        &kp Y &kp U &kp I     &kp O   &kp P    &trans
                 &trans &kp A &hmr_l2 LGUI S &hmr_l LALT D &hmr_l2 LSHIFT F &hmr_l LCTRL G   &hmr_r RCTRL H &hmr_r2 RSHIFT J &hmr_r RALT K &hmr_r2 RGUI L &kp SEMI &trans
@@ -217,7 +217,7 @@
         };
 
         base_w {
-            display-name = "BASE-W";
+            display-name = "BASE_W";
             bindings = <
                 &trans &kp Q &kp W &kp E &kp R &kp T                                        &kp Y &kp U &kp I     &kp O   &kp P    &trans
                 &trans &kp A &kp S &hmr_l LALT D &hmr_l2 LSHIFT F &hmr_l LCTRL G   &hmr_r RCTRL H &hmr_r2 RSHIFT J &hmr_r RALT K &kp L &kp SEMI &trans
