@@ -1,15 +1,13 @@
+#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define BASE 0
 #define NAV  1
 #define NUM  2
 #define SYM  3
 #define MOUS 4
-
 
 / {
     conditional_layers { compatible = "zmk,conditional-layers"; };
@@ -47,7 +45,7 @@
         sym {
             display-name = "SYM";
             bindings = <
-&kp PERCENT  &kp GRAVE  &kp SQT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BACKSLASH  &none  &none  &none  &none  &none  &none  &kp DOLLAR  &kp EQUAL  &kp PLUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS  &none  &none  &none  &none  &none  &none  &kp CARET  &kp AT_SIGN  &kp AMPERSAND  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp HASH  &none  &none  &none  &none  &none  &none  &kp F2  &kp ASTERISK  &kp EXCLAMATION  &none  &none  &none
+&kp PERCENT  &kp GRAVE  &kp SQT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BACKSLASH  &none  &none  &none  &none  &none  &none  &kp DOLLAR  &kp EQUAL  &kp PLUS  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS  &none  &none  &none  &none  &none  &none  &kp CARET  &kp AT_SIGN  &kp AMPERSAND  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp HASH  &none  &none  &none  &none  &none  &none  &kp F2  &kp ASTERISK  &kp EXCLAMATION  &none  &none  &studio_unlock
             >;
         };
 
