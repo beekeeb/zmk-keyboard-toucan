@@ -14,7 +14,7 @@
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
     aliases {
-        led-red = &led0;   // 이 부분이 있는지 꼭 확인하세요!
+        led-red = &led0;
         led-green = &led1;
         led-blue = &led2;
     };
