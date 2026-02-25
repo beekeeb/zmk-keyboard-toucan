@@ -10,8 +10,8 @@ manifest:
       url-base: https://github.com/caksoylar
     - name: geeksville
       url-base: https://github.com/geeksville
-    - name: moryoav
-      url-base: https://github.com/moryoav
+    - name: suhakwak
+      url-base: https://github.com/suhakwak
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -20,7 +20,7 @@ manifest:
       remote: geeksville
       revision: toucan
     - name: zmk-rgbled-widget
-      remote: moryoav
+      remote: suhakwak
       revision: main
   self:
     path: config
