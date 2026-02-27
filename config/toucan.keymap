@@ -31,7 +31,7 @@
         nav {
             display-name = "NAV";
             bindings = <
-&none  &none  &none  &kp LG(GRAVE)  &none  &none  &kp PAGE_UP  &kp LG(LEFT)  &kp UP  &kp LG(RIGHT)  &kp C_VOLUME_UP  &kp DELETE  &none  &none  &kp LSHIFT  &kp LGUI  &none  &none  &kp PAGE_DOWN  &kp LEFT  &kp DOWN  &kp RIGHT  &kp C_VOLUME_DOWN  &kp LS(LG(NUMBER_4))  &none  &none  &none  &none  &none  &none  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &none  &none  &none  &kp LALT  &none  &none  &none  &none
+&none  &none  &none  &kp LG(GRAVE)  &none  &none  &kp PAGE_UP  &kp LG(LEFT)  &kp UP  &kp LG(RIGHT)  &kp C_VOLUME_UP  &kp DELETE  &none  &none  &kp LSHIFT  &kp LGUI  &none  &none  &kp PAGE_DOWN  &kp LEFT  &kp DOWN  &kp RIGHT  &kp C_VOLUME_DOWN  &kp LS(LG(LC(NUMBER_4)))  &none  &none  &none  &none  &none  &none  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &none  &none  &none  &kp LALT  &none  &none  &none  &none
             >;
         };
 
@@ -52,7 +52,7 @@
         mous {
             display-name = "MOUS";
             bindings = <
-&none  &kp LCTRL  &kp LSHIFT  &kp LGUI  &none  &none  &none  &none  &mmv MOVE_UP  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none  &none  &none  &none  &none  &none  &none  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &none  &none  &none  &none  &mkp MB1  &mkp MB2  &none  &none
+&none  &none  &kp LSHIFT  &kp LGUI  &none  &none  &none  &none  &mmv MOVE_UP  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none  &none  &none  &none  &none  &none  &none  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &none  &none  &none  &none  &mkp MB1  &mkp MB2  &none  &none
             >;
         };
     };
