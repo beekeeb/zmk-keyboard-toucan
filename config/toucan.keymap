@@ -52,7 +52,7 @@
         mous {
             display-name = "MOUS";
             bindings = <
-&none  &none  &kp LSHIFT  &kp LGUI  &none  &none  &none  &none  &mmv MOVE_UP  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none  &none  &none  &none  &none  &none  &none  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &none  &none  &none  &none  &mkp MB1  &mkp MB2  &none  &none
+&none  &kp LCTRL  &kp LSHIFT  &kp LGUI  &none  &none  &none  &none  &mmv MOVE_UP  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none  &none  &none  &none  &none  &none  &none  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &none  &none  &none  &none  &mkp MB1  &mkp MB2  &none  &none
             >;
         };
     };
