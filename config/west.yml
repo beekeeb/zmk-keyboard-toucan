@@ -18,6 +18,8 @@ manifest:
       url-base: https://github.com/geeksville
     - name: janpfischer
       url-base: https://github.com/janpfischer
+    - name: bwshockley
+      url-base: https://github.com/bwshockley
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -32,7 +34,7 @@ manifest:
       remote: carrefinho
       revision: main
     - name: zmk-dongle-screen
-      remote: janpfischer
+      remote: bwshockley
       revision: main
       
   self:
