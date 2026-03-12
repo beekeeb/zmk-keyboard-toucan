@@ -31,12 +31,12 @@ manifest:
     - name: zmk-rgbled-widget
       remote: caksoylar
       revision: v0.3
-#    - name: prospector-zmk-module
-#      remote: carrefinho
-#      revision: main
-    - name: zmk-dongle-screen
-      remote: bwshockley
+    - name: prospector-zmk-module
+      remote: carrefinho
       revision: main
+#    - name: zmk-dongle-screen
+#      remote: bwshockley
+#      revision: main
       
   self:
     path: config
