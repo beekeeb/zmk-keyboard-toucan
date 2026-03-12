@@ -14,23 +14,25 @@
 };
 
 / {
-
     combos {
         compatible = "zmk,combos";
 
         LeftMouseClick {
             bindings = <&mkp LCLK>;
             key-positions = <37 36>;
+            layers = <0>;
         };
 
         RightMouseClick {
             bindings = <&mkp RCLK>;
             key-positions = <38 37>;
+            layers = <0>;
         };
 
         MouseModeToggle {
             bindings = <&tog 3>;
             key-positions = <41 40>;
+            layers = <0>;
         };
     };
 
