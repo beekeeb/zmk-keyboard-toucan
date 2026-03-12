@@ -46,28 +46,28 @@
         compatible = "zmk,keymap";
 
         base {
-            display-name = "BASE";
+            display-name = "Base";
             bindings = <
 &kp ESC  &kp Q  &kp W  &kp E  &mt LS(LG(NUMBER_4)) R  &mt LG(T) T  &kp Y  &mt LG(U) U  &mt LG(I) I  &kp O  &mt LG(P) P  &kp BSPC  &kp TAB  &mt LG(A) A  &mt LG(S) S  &kp D  &mt LG(F) F  &mt LG(G) G  &kp H  &kp J  &kp K  &kp L  &kp SQT  &kp ENTER  &kp LSHFT  &mt LG(Z) Z  &mt LG(X) X  &mt LG(C) C  &mt LG(V) V  &mt LG(B) B  &mt LG(N) N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &lt 2 MINUS  &kp LEFT_ALT  &kp LEFT_GUI  &lt 1 EQUAL  &kp SPACE  &lt 1 COLON  &lt 2 SEMICOLON
             >;
         };
 
         num {
-            display-name = "NUM";
+            display-name = "Number";
             bindings = <
 &kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp BSPC  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LC(LEFT)  &kp UP_ARROW  &kp LC(RIGHT)  &kp LSHFT  &kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans  &trans  &kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp LEFT  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LEFT_ALT  &kp LEFT_COMMAND  &trans  &trans  &trans  &trans
             >;
         };
 
         sym {
-            display-name = "SYM";
+            display-name = "Symbol";
             bindings = <
 &kp TILDE  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp ASTERISK  &kp LPAR  &kp RPAR  &kp BSPC  &trans  &trans  &trans  &trans  &trans  &bootloader  &bootloader  &trans  &trans  &kp LC(LEFT)  &kp UP_ARROW  &kp LC(RIGHT)  &trans  &kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans  &trans  &kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         adj {
-            display-name = "MOUSE";
+            display-name = "Mouse";
             bindings = <
 &tog 0  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp BSPC  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt LSHFT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE  &mkp LCLK  &mkp RCLK  &trans
             >;
