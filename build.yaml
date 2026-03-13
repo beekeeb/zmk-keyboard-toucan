@@ -26,7 +26,9 @@ include:
     cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: seeeduino_xiao_ble
     shield: toucan_left rgbled_adapter toucan_pet
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_PM_SOFT_OFF=y
   - board: seeeduino_xiao_ble
     shield: toucan_right rgbled_adapter
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_PM_SOFT_OFF=y
   - board: seeeduino_xiao_ble
     shield: settings_reset
