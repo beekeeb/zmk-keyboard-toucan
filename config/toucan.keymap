@@ -63,7 +63,7 @@
         adj {
             display-name = "Mouse";
             bindings = <
-&tog 0  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp BSPC  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt LSHFT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE  &mkp LCLK  &mkp RCLK  &trans
+&tog 0  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp BSPC  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt LSHFT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_ALT  &mkp LCLK  &mkp RCLK  &kp SPACE  &tog 0  &tog 0
             >;
         };
 
