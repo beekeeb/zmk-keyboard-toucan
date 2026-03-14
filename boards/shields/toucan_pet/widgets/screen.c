@@ -233,8 +233,8 @@ static int display_activity_event_handler(const zmk_event_t *eh) {
     return 0;
 }
 
-ZMK_LISTENER(nice_view_gem_display, display_activity_event_handler);
-ZMK_SUBSCRIPTION(nice_view_gem_display, zmk_activity_state_changed);
+ZMK_LISTENER(toucan_pet_display, display_activity_event_handler);
+ZMK_SUBSCRIPTION(toucan_pet_display, zmk_activity_state_changed);
 
 /**
  * Initialization
