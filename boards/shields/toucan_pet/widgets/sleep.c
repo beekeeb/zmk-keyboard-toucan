@@ -109,7 +109,7 @@ static const uint8_t sleep_icon_map[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-static const lv_img_dsc_t sleep_icon = {
+const lv_img_dsc_t sleep_icon = {
     .header.cf = LV_IMG_CF_INDEXED_1BIT,
     .header.always_zero = 0,
     .header.reserved = 0,

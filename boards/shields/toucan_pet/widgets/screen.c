@@ -197,46 +197,6 @@ ZMK_SUBSCRIPTION(widget_output_status, zmk_ble_active_profile_changed);
 #endif
 
 /**
- * Activity state handling for sleep screen
- **/
-
-static void force_redraw_all_widgets(void) {
-    struct zmk_widget_screen *widget;
-    SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) {
-        draw_top(widget->obj, widget->cbuf, &widget->state);
-    }
-}
-
-static int display_activity_event_handler(const zmk_event_t *eh) {
-    struct zmk_activity_state_changed *ev = as_zmk_activity_state_changed(eh);
-    if (ev == NULL) {
-        return -ENOTSUP;
-    }
-
-    switch (ev->state) {
-    case ZMK_ACTIVITY_ACTIVE:
-        set_sleep_screen_active(false);
-        // No need to force a redraw, it will happen automatically if really coming back from sleep (ACTIVE also comes after IDLE)
-        //force_redraw_all_widgets();
-        break;
-    case ZMK_ACTIVITY_SLEEP:
-        set_sleep_screen_active(true);
-        force_redraw_all_widgets();
-        // Force LVGL to process pending updates and flush to display hardware
-        // before the CPU enters deep sleep
-        lv_task_handler();
-        lv_refr_now(NULL);
-        break;
-    default:
-        break; // ignore other states (like IDLE)
-    }
-    return 0;
-}
-
-ZMK_LISTENER(toucan_pet_display, display_activity_event_handler);
-ZMK_SUBSCRIPTION(toucan_pet_display, zmk_activity_state_changed);
-
-/**
  * Initialization
  **/
 
