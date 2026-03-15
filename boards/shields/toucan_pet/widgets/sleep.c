@@ -7,7 +7,6 @@ static bool show_sleep_screen = false;
 
 // Beekeeb icon 128x128 - LVGL indexed 1-bit format
 static const uint8_t sleep_icon_map[] = {
-const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_BEEKEEB uint8_t beekeeb_map[] = {
   0xde, 0xfa, 0xfb, 0xff, 	/*Color of index 0*/
   0x0c, 0x0d, 0x0d, 0xff, 	/*Color of index 1*/
 
