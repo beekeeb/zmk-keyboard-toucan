@@ -11,7 +11,7 @@ LV_IMG_DECLARE(sleep_icon);
 
 static lv_obj_t *screen_img;
 static lv_obj_t *sleep_label;
-static lv_obj_t *awake_label;
+static lv_obj_t *active_label;
 
 
 void setup_status_screen(lv_obj_t *screen) {
