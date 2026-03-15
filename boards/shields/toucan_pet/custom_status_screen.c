@@ -25,7 +25,7 @@ void setup_status_screen(lv_obj_t *screen) {
     lv_obj_center(screen_img);
 
     active_label = lv_label_create(screen);
-    lv_label_set_text(active_label, "PROSPECTOR MODE");
+    lv_label_set_text(active_label, "PROSPECTOR");
     lv_obj_set_style_text_font(active_label, &quinquefive_8, LV_PART_MAIN);
     lv_obj_set_style_text_color(active_label, lv_color_white(), LV_PART_MAIN);
     lv_obj_align(active_label, LV_ALIGN_BOTTOM_MID, 0, -10);
