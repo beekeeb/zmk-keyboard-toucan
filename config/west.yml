@@ -34,8 +34,8 @@ manifest:
       remote: carrefinho
       revision: main
     - name: zmk-dongle-screen
-      remote: janpfischer
-      revision: main
+      remote: alee0729
+      revision: enhance-wpm-meter-y9Hrb
       
   self:
     path: config
