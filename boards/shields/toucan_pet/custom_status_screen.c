@@ -11,6 +11,9 @@ LV_IMG_DECLARE(sleep_icon);
 static lv_obj_t *screen_img;
 
 void setup_status_screen(lv_obj_t *screen) {
+    lv_obj_set_style_border_width(screen, 0, LV_PART_MAIN);
+    lv_obj_set_style_pad_all(screen, 0, LV_PART_MAIN);
+
     screen_img = lv_img_create(screen);
     lv_img_set_src(screen_img, &toucan128);
     lv_obj_center(screen_img);
