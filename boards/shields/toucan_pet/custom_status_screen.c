@@ -40,7 +40,6 @@ static int display_activity_event_handler(const zmk_event_t *eh) {
         break;
     case ZMK_ACTIVITY_SLEEP:
         set_sleep_screen_active(true);
-        lv_canvas_fill_bg(screen, lv_color_white(), LV_OPA_100);
         lv_img_set_src(screen_img, &sleep_icon);
         lv_obj_center(screen_img);
         lv_task_handler();
