@@ -1,14 +1,6 @@
 #pragma once
 
 #include <lvgl.h>
-#include "util.h"
-
-/**
- * Draw a sleep screen showing the keyboard is in sleep mode.
- * This is displayed when the device enters deep sleep to give the user visual
- * feedback before the display is powered off.
- */
-void draw_sleep_screen(lv_obj_t *canvas);
 
 /**
  * Check if the sleep screen should be shown.
