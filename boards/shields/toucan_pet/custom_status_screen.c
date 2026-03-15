@@ -19,11 +19,6 @@ void setup_status_screen(lv_obj_t *screen) {
     lv_obj_set_style_pad_all(screen, 0, LV_PART_MAIN);
     lv_obj_set_style_bg_color(screen, lv_color_black(), LV_PART_MAIN);
     lv_obj_set_style_bg_opa(screen, LV_OPA_COVER, LV_PART_MAIN);
-
-    lv_label_set_text(screen, "DONGLE MODE");
-    lv_obj_set_style_text_font(screen, &quinquefive_8, LV_PART_MAIN);
-    lv_obj_set_style_text_color(screen, lv_color_white(), LV_PART_MAIN);
-    lv_obj_align(screen, LV_ALIGN_BOTTOM_MID, 0, -10);
     
     screen_img = lv_img_create(screen);
     lv_img_set_src(screen_img, &toucan128);
