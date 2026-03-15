@@ -43,6 +43,7 @@
                     <NRF_PSEL(SPIM_MOSI, 1, 15)>,
                     <NRF_PSEL(SPIM_MISO, 1, 14)>;
             low-power-enable;
+            bias-pull-down; // minimize power leakage during sleep
         };
     };
 
@@ -54,7 +55,7 @@
    pinctrl-0 = <&spi0_default>;
    pinctrl-1 = <&spi0_sleep>;
    pinctrl-names = "default", "sleep";
-   cs-gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+   cs-gpios = <&gpio0 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;  // pull-up to ensure CS is !asserted when asleep
    glidepoint:  glidepoint@0 {
         compatible = "cirque,pinnacle";
         reg = <0>;
@@ -63,6 +64,10 @@
         dr-gpios = <&gpio0 2 (GPIO_ACTIVE_HIGH)>;
         sensitivity = "2x";
         x-invert;
+
+        // Optional: turning this on enables very aggressive power saving, after 5 seconds with no touches
+        // the trackpad will go to sleep.  It wakes up on touch, but there is a ~300ms delay.  Most users will find
+        // the standard behavior of 'put to sleep when zmk enters idle state (30 seconds without a keypress) feels better.
 	    //sleep;
     };
 };
