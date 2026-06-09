@@ -66,10 +66,10 @@
         tap {
             display-name = "TAP";
             bindings = <
-                &trans &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans &trans
-                                     &trans &trans &trans   &mkp LCLK &mkp RCLK &mkp MCLK
+                &trans    &trans    &trans    &trans    &trans    &trans    /**/ &trans    &trans    &trans    &trans    &trans    &trans
+                &trans    &trans    &mkp LCLK &mkp MCLK &mkp RCLK &trans    /**/ &mkp LCLK &mkp MCLK &mkp RCLK &trans    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans    /**/ &trans    &trans    &trans    &trans    &trans    &trans
+                                              &mkp LCLK &mkp RCLK &mkp MCLK /**/ &mkp LCLK &mkp RCLK &mkp MCLK
             >;
         };
     };
