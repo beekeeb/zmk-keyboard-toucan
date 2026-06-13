@@ -1,0 +1,145 @@
+#!/usr/bin/env bash
+#
+# build-and-load — fetch the CI-built ZMK firmware for the current commit and
+# flash it onto the Toucan halves over the UF2 bootloader.
+#
+# This does NOT build locally. ZMK is built by GitHub Actions
+# (.github/workflows/build.yml -> zmkfirmware build-user-config), which uploads
+# a "firmware" artifact containing the .uf2 files. This script downloads that
+# artifact and copies the .uf2 onto the keyboard's bootloader drive, walking
+# you through entering the bootloader from the keymap.
+#
+# Entering the bootloader (set up in config/toucan.keymap on the ADJ layer):
+#   Hold the NAV thumb key (far-left thumb) + SYM thumb key (far-right thumb)
+#   together to reach the ADJ layer, then tap:
+#       Q  -> puts the LEFT half into the bootloader
+#       P  -> puts the RIGHT half into the bootloader
+#   (Both halves must be powered/paired for the ADJ combo to register.)
+#   Fallback: double-tap the reset button on the half you want to flash.
+#
+# Usage:
+#   scripts/build-and-load                  # flash left then right (default)
+#   scripts/build-and-load left             # flash only the left half
+#   scripts/build-and-load right            # flash only the right half
+#   scripts/build-and-load left right reset # also flash settings_reset
+#   scripts/build-and-load --run 123456789  # use a specific workflow run id
+#
+set -euo pipefail
+
+repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+cd "$repo_root"
+
+bold=$(tput bold 2>/dev/null || true); reset=$(tput sgr0 2>/dev/null || true)
+say()  { printf '%s\n' "$*"; }
+step() { printf '\n%s==>%s %s\n' "$bold" "$reset" "$*"; }
+die()  { printf 'error: %s\n' "$*" >&2; exit 1; }
+
+# ---- prerequisites (detect & instruct, no auto-install) ----
+missing=0
+if ! command -v gh >/dev/null 2>&1; then
+  say "Missing: gh (GitHub CLI).  Install it with:  brew install gh"
+  missing=1
+elif ! gh auth status >/dev/null 2>&1; then
+  say "gh is installed but not authenticated.  Run:  gh auth login"
+  missing=1
+fi
+[ "$missing" -eq 0 ] || die "Install/fix the prerequisites above, then re-run."
+
+# ---- parse args ----
+run_id=""
+targets=()
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --run)        run_id="${2:?--run needs a run id}"; shift 2;;
+    left|right|reset) targets+=("$1"); shift;;
+    both)         targets+=(left right); shift;;
+    -h|--help)    sed -n '2,/^set -/{/^set -/d;s/^#\{0,1\} \{0,1\}//;p;}' "$0"; exit 0;;
+    *)            die "unknown argument: $1 (try --help)";;
+  esac
+done
+[ ${#targets[@]} -gt 0 ] || targets=(left right)
+
+# ---- find the workflow run to download ----
+sha=$(git rev-parse HEAD)
+short=$(git rev-parse --short HEAD)
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ -z "$run_id" ]; then
+  step "Looking for a CI build of the current commit ($short)…"
+  run_id=$(gh run list --commit "$sha" -L 1 --json databaseId -q '.[0].databaseId' 2>/dev/null || true)
+  if [ -z "$run_id" ]; then
+    say "No GitHub Actions run found for commit $short."
+    say "It likely hasn't been pushed yet — push it so CI builds it:"
+    say "    git push origin $branch"
+    say "…then re-run this script.  (Or pass --run <id> to use an existing build.)"
+    die "no CI build for the current commit"
+  fi
+fi
+
+# ---- wait for the run to finish, require success ----
+status=$(gh run view "$run_id" --json status -q .status 2>/dev/null || die "run $run_id not found")
+if [ "$status" != "completed" ]; then
+  step "Build $run_id is '$status' — watching until it finishes…"
+  gh run watch "$run_id" --exit-status || die "CI build failed (run $run_id)"
+fi
+conclusion=$(gh run view "$run_id" --json conclusion -q .conclusion)
+[ "$conclusion" = "success" ] || die "CI build did not succeed (conclusion: $conclusion, run $run_id)"
+
+# ---- download the firmware artifact ----
+workdir=$(mktemp -d "${TMPDIR:-/tmp}/toucan-fw.XXXXXX")
+trap 'rm -rf "$workdir"' EXIT
+step "Downloading firmware from run $run_id…"
+gh run download "$run_id" -n firmware -D "$workdir" \
+  || die "could not download the 'firmware' artifact from run $run_id"
+
+# locate a single .uf2 matching a glob (filenames contain spaces)
+find_uf2() {
+  local pat="$1" matches=()
+  while IFS= read -r -d '' f; do matches+=("$f"); done \
+    < <(find "$workdir" -maxdepth 1 -name "$pat" -print0)
+  [ ${#matches[@]} -eq 1 ] || return 1
+  printf '%s' "${matches[0]}"
+}
+
+# Wait for a UF2 bootloader volume (identified by INFO_UF2.TXT) to mount, copy
+# the firmware onto it, then wait for it to eject (= flashing complete).
+flash_file() {
+  local label="$1" how="$2" uf2="$3"
+  step "Flash the ${label} half"
+  say "  → ${how}"
+  say "  Waiting for the bootloader drive to mount…"
+
+  local vol=""
+  while [ -z "$vol" ]; do
+    for v in /Volumes/*; do
+      [ -e "$v/INFO_UF2.TXT" ] && { vol="$v"; break; }
+    done
+    [ -z "$vol" ] && sleep 0.4
+  done
+
+  say "  Found bootloader drive: $vol"
+  say "  Copying $(basename "$uf2") …"
+  cp "$uf2" "$vol"/
+  sync
+  say "  Waiting for the drive to eject (board reboots when done)…"
+  while [ -e "$vol/INFO_UF2.TXT" ]; do sleep 0.4; done
+  say "  ${bold}✓ ${label} half flashed.${reset}"
+}
+
+combo="Hold NAV (far-left thumb) + SYM (far-right thumb) to reach ADJ, then tap"
+
+for t in "${targets[@]}"; do
+  case "$t" in
+    left)
+      f=$(find_uf2 '*toucan_left*-zmk.uf2')  || die "couldn't find the left .uf2 in the artifact"
+      flash_file "LEFT"  "$combo ${bold}Q${reset}  (or double-tap reset on the left half)"  "$f";;
+    right)
+      f=$(find_uf2 '*toucan_right*-zmk.uf2') || die "couldn't find the right .uf2 in the artifact"
+      flash_file "RIGHT" "$combo ${bold}P${reset}  (or double-tap reset on the right half)" "$f";;
+    reset)
+      f=$(find_uf2 'settings_reset*-zmk.uf2') || die "couldn't find the settings_reset .uf2 in the artifact"
+      flash_file "SETTINGS-RESET" "Double-tap the reset button on the half you want to wipe" "$f";;
+  esac
+done
+
+step "All done."
