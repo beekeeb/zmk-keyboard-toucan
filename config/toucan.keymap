@@ -45,9 +45,9 @@
         sym {
             display-name = "SYM";
             bindings = <
-                &trans          &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT                                       &kp LPAR        &kp N7          &kp N8          &kp N9          &kp RPAR        &kp MINUS       
-                &trans          &trans          &trans          &kp KP_MULTIPLY &kp AMPS        &kp CARET                                       &kp RBKT        &kp N4          &kp N5          &kp N6          &kp BSLH        &kp GRAVE       
-                &trans          &trans          &trans          &trans          &trans          &trans                                          &kp RBRC        &kp N1          &kp N2          &kp N3          &kp PIPE        &kp TILDE       
+                &kp TILDE       &kp EXCL        &kp AT          &kp LPAR        &kp RPAR        &kp PRCNT                                       &trans          &kp N7          &kp N8          &kp N9          &kp KP_MULTIPLY &trans          
+                &kp GRAVE       &kp HASH        &kp DLLR        &kp LBKT        &kp RBKT        &kp CARET                                       &trans          &kp N4          &kp N5          &kp N6          &kp PLUS        &trans          
+                &kp PIPE        &kp BSLH        &kp AMPS        &kp LBRC        &kp RBRC        &trans                                          &trans          &kp N1          &kp N2          &kp N3          &kp MINUS       &trans          
                                                                                 &trans          &trans          &trans          &trans          &trans          &kp N0          
             >;
         };
