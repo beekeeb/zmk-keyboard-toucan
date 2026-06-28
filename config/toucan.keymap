@@ -25,10 +25,10 @@
         base {
             display-name = "BASE";
             bindings = <
-                &kp TAB         &kp Q           &kp W           &kp E           &kp R           &kp T           &kp Y           &kp U           &kp I           &kp O           &kp P           &kp ESC
-                &kp LCTRL       &kp A           &kp S           &kp D           &kp F           &kp G           &kp H           &kp J           &kp K           &kp L           &kp SEMI        &kp SQT
-                &kp LSHFT       &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH        &kp RALT
-                                                &mo 1           &kp BSPC        &kp LGUI        &kp SPACE       &kp RET         &mo 2   
+                &kp TAB         &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y           &kp U           &kp I           &kp O           &kp P           &kp ESC         
+                &kp LCTRL       &kp A           &kp S           &kp D           &kp F           &kp G                                           &kp H           &kp J           &kp K           &kp L           &kp SEMI        &kp SQT         
+                &kp LSHFT       &kp Z           &kp X           &kp C           &kp V           &kp B                                           &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH        &kp RALT        
+                                                                                &mo 1           &kp BSPC        &kp LGUI        &kp SPACE       &kp RET         &mo 2           
             >;
         };
 
@@ -45,30 +45,30 @@
         sym {
             display-name = "SYM";
             bindings = <
-                &kp TAB         &kp EXCL        &kp AT          &kp HASH        &kp DLLR                                        &kp PRCNT       &kp N7          &kp N8          &kp N9          &kp LPAR        &kp RPAR        &kp MINUS       
-                &kp LCTRL       &trans          &trans          &trans          &trans                                          &trans          &kp N4          &kp N5          &kp N6          &kp RBKT        &kp BSLH        &kp GRAVE       
-                &kp LSHFT       &trans          &trans          &trans          &trans                                          &trans          &kp N1          &kp N2          &kp N3          &kp RBRC        &kp PIPE        &kp TILDE       
-                                                                &trans          &trans          &trans          &trans          &trans          &kp N0          
+                &kp TAB         &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT                                       &kp LPAR        &kp N7          &kp N8          &kp N9          &kp RPAR        &kp MINUS       
+                &kp LCTRL       &trans          &trans          &trans          &trans          &trans                                          &kp RBKT        &kp N4          &kp N5          &kp N6          &kp BSLH        &kp GRAVE       
+                &kp LSHFT       &trans          &trans          &trans          &trans          &trans                                          &kp RBRC        &kp N1          &kp N2          &kp N3          &kp PIPE        &kp TILDE       
+                                                                                &trans          &trans          &trans          &trans          &trans          &kp N0          
             >;
         };
 
         adj {
             display-name = "ADJ";
             bindings = <
-                &bt BT_CLR      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3                                    &bt BT_SEL 4    &trans          &trans          &trans          &trans          &trans          &trans          
-                &trans          &trans          &trans          &trans          &trans                                          &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP    &trans          &trans          &trans          &trans          
-                &trans          &studio_unlock  &bootloader     &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans          
-                                                                &trans          &trans          &trans          &trans          &trans          &trans          
+                &bt BT_CLR      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                                    &trans          &trans          &trans          &trans          &trans          &trans          
+                &trans          &trans          &trans          &trans          &trans          &trans                                          &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP    &trans          &trans          &trans          
+                &trans          &studio_unlock  &bootloader     &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          
+                                                                                &trans          &trans          &trans          &trans          &trans          &trans          
             >;
         };
 
         tap {
             display-name = "TAP";
             bindings = <
-                &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans          
-                &trans          &trans          &mkp MCLK       &mkp LCLK       &mkp RCLK                                       &trans          &trans          &trans          &trans          &trans          &trans          &trans          
-                &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          &trans          
-                                                                &trans          &trans          &trans          &trans          &trans          &trans          
+                &trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          
+                &trans          &trans          &mkp MCLK       &mkp LCLK       &mkp RCLK       &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          
+                &trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          
+                                                                                &trans          &trans          &trans          &trans          &trans          &trans          
             >;
         };
     };
