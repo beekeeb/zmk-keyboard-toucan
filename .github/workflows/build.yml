@@ -4,3 +4,39 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install keymap-drawer
+        # Pin tree-sitter + grammar to a matched, working pair: tree-sitter 0.25
+        # dropped Query.captures (used by keymap-drawer 0.21) and the 0.15 grammar
+        # needs a newer ABI than 0.24 supports.
+        run: pip install "keymap-drawer==0.21.0" "tree-sitter~=0.24.0" "tree-sitter-devicetree~=0.14.0"
+
+      - name: Install rsvg-convert
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
+
+      - name: Render keymap drawing (SVG + PNG)
+        run: |
+          keymap parse -z config/toucan.keymap -c 12 -o config/toucan.keymap.yaml
+          keymap draw config/toucan.keymap.yaml -j config/toucan.json -o config/toucan.svg
+          rsvg-convert -z 2 config/toucan.svg -o config/toucan.png
+
+      - name: Upload keymap drawing
+        uses: actions/upload-artifact@v4
+        with:
+          name: keymap-drawing
+          path: |
+            config/toucan.svg
+            config/toucan.png
