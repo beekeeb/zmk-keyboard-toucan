@@ -35,8 +35,8 @@
         nav {
             display-name = "NAV";
             bindings = <
-                &trans          &kp UNDER       &kp PLUS        &kp LBRC        &kp MINUS       &kp EQUAL                                       &kp LBKT        &kp CARET       &kp AMPS        &kp KP_MULTIPLY &trans          &trans          
-                &trans          &trans          &mkp MCLK       &mkp LCLK       &mkp RCLK       &trans                                          &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &trans          &trans          
+                &mkp MCLK       &mkp LCLK       &kp UP          &mkp RCLK       &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          
+                &trans          &kp LEFT        &kp DOWN        &kp RIGHT       &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          
                 &trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans          
                                                                                 &trans          &trans          &trans          &trans          &trans          &trans          
             >;
@@ -46,7 +46,7 @@
             display-name = "SYM";
             bindings = <
                 &trans          &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT                                       &kp LPAR        &kp N7          &kp N8          &kp N9          &kp RPAR        &kp MINUS       
-                &trans          &trans          &trans          &trans          &trans          &trans                                          &kp RBKT        &kp N4          &kp N5          &kp N6          &kp BSLH        &kp GRAVE       
+                &trans          &trans          &trans          &kp KP_MULTIPLY &kp AMPS        &kp CARET                                       &kp RBKT        &kp N4          &kp N5          &kp N6          &kp BSLH        &kp GRAVE       
                 &trans          &trans          &trans          &trans          &trans          &trans                                          &kp RBRC        &kp N1          &kp N2          &kp N3          &kp PIPE        &kp TILDE       
                                                                                 &trans          &trans          &trans          &trans          &trans          &kp N0          
             >;
