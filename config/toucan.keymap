@@ -19,6 +19,27 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        // Hold all four corner keys of one half to jump that half into the
+        // bootloader. Key positions are the four corners of each 3-row block:
+        //   left  -> top-left 0,  top-right 5,  bottom-left 24, bottom-right 29
+        //   right -> top-left 6, top-right 11, bottom-left 30, bottom-right 35
+        // Deliberate to hit, so they're hard to trigger by accident.
+        combo_boot_left {
+            timeout-ms = <100>;
+            key-positions = <0 5 24 29>;
+            bindings = <&bootloader>;
+        };
+
+        combo_boot_right {
+            timeout-ms = <100>;
+            key-positions = <6 11 30 35>;
+            bindings = <&bootloader>;
+        };
+    };
+
     behaviors {
         // "Timeless homerow mods" style hold-tap, applied as a layer-tap.
         // Tap  -> sends the key (param 2).
