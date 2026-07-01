@@ -71,14 +71,14 @@
         nav {
             display-name = "NAV";
             bindings = <
-&trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp BSPC  &trans  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI  &kp LEFT_SHIFT  &caps_word  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans  &bootloader  &studio_unlock  &trans  &trans  &trans  &trans  &kp C_AC_HOME  &kp PAGE_DOWN  &kp PAGE_UP  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp RALT
+&trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans  &trans  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI  &kp LEFT_SHIFT  &caps_word  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans  &bootloader  &studio_unlock  &trans  &trans  &trans  &trans  &kp C_AC_HOME  &kp PAGE_DOWN  &kp PAGE_UP  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp RALT
             >;
         };
 
         sym {
             display-name = "SYM";
             bindings = <
-&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp ASTERISK  &kp NON_US_BACKSLASH  &kp LS(NON_US_BACKSLASH)  &kp BSPC  &trans  &kp DOUBLE_QUOTES  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &kp LA(N3)  &kp SLASH  &kp MINUS  &kp EQUAL  &kp COLON  &kp SEMI  &trans  &trans  &kp SINGLE_QUOTE  &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &trans  &kp BACKSLASH  &kp UNDER  &kp PLUS  &kp PIPE  &kp QUESTION  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp ASTERISK  &kp TILDE  &kp GRAVE  &trans  &trans  &kp DOUBLE_QUOTES  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &kp LA(N3)  &kp SLASH  &kp MINUS  &kp EQUAL  &kp COLON  &kp SEMI  &trans  &trans  &kp SINGLE_QUOTE  &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &trans  &kp BACKSLASH  &kp UNDER  &kp PLUS  &kp PIPE  &kp QUESTION  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
