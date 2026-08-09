@@ -1,24 +1,26 @@
 manifest:
-  defaults:
-    revision: v0.3
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: petejohanson
-      url-base: https://github.com/petejohanson/
     - name: caksoylar
       url-base: https://github.com/caksoylar
     - name: geeksville
       url-base: https://github.com/geeksville
+    - name: beekeeb
+      url-base: https://github.com/beekeeb
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
-    - name: cirque-input-module
-      remote: geeksville
-      revision: toucan
+      revision: v0.3
     - name: zmk-rgbled-widget
       remote: caksoylar
       revision: v0.3
+    - name: zmk_driver_azoteq
+      remote: beekeeb
+      revision: main
+    - name: zmk-input-zoom
+      remote: beekeeb
+      revision: main
   self:
     path: config

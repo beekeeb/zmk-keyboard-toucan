@@ -1,10 +1,4 @@
 #include "toucan.dtsi"
-#include <input/processors.dtsi>
-#include <dt-bindings/zmk/input_transform.h>
-
-&xiao_i2c {
-    status = "disabled";
-};
 
 &default_transform {
     col-offset = <6>;
@@ -29,52 +23,63 @@
 };
 
 &pinctrl {
-    spi0_default: spi0_default {
+    i2c0_azoteq_default: i2c0_azoteq_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 1, 13)>,
-                <NRF_PSEL(SPIM_MOSI, 1, 15)>,
-                <NRF_PSEL(SPIM_MISO, 1, 14)>;
+            psels = <NRF_PSEL(TWIM_SDA, 1, 13)>,
+                    <NRF_PSEL(TWIM_SCL, 1, 15)>;
+            bias-pull-up;
         };
     };
 
-     spi0_sleep: spi0_sleep {
+    i2c0_azoteq_sleep: i2c0_azoteq_sleep {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 1, 13)>,
-                    <NRF_PSEL(SPIM_MOSI, 1, 15)>,
-                    <NRF_PSEL(SPIM_MISO, 1, 14)>;
+            psels = <NRF_PSEL(TWIM_SDA, 1, 13)>,
+                    <NRF_PSEL(TWIM_SCL, 1, 15)>;
             low-power-enable;
-            bias-pull-down; // minimize power leakage during sleep
         };
     };
-
 };
 
-&spi0 {
-   compatible = "nordic,nrf-spim";
-   status = "okay";
-   pinctrl-0 = <&spi0_default>;
-   pinctrl-1 = <&spi0_sleep>;
-   pinctrl-names = "default", "sleep";
-   cs-gpios = <&gpio0 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;  // pull-up to ensure CS is !asserted when asleep
-   glidepoint:  glidepoint@0 {
-        compatible = "cirque,pinnacle";
-        reg = <0>;
-        spi-max-frequency = <1000000>;
-        status = "okay";
-        dr-gpios = <&gpio0 2 (GPIO_ACTIVE_HIGH)>;
-        sensitivity = "2x";
-        x-invert;
+&i2c0 {
+    status = "okay";
+    clock-frequency = <I2C_BITRATE_FAST>;
+    pinctrl-0 = <&i2c0_azoteq_default>;
+    pinctrl-1 = <&i2c0_azoteq_sleep>;
+    pinctrl-names = "default", "sleep";
 
-        // Optional: turning this on enables very aggressive power saving, after 5 seconds with no touches
-        // the trackpad will go to sleep.  It wakes up on touch, but there is a ~300ms delay.  Most users will find
-        // the standard behavior of 'put to sleep when zmk enters idle state (30 seconds without a keypress) feels better.
-	    //sleep;
+    tps43_trackpad: trackpad@74 {
+        compatible = "azoteq,tps43";
+        reg = <0x74>;
+        status = "okay";
+
+        rst-gpios = <&gpio1 14 GPIO_ACTIVE_HIGH>;
+        rdy-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+
+        enable-power-management;
+        // idle-sleep; // provides maximal power savings but when ZMK is idle (i.e. you haven't used keyboard in 30secs) the touchpad will not work.  not recommended.
+        // timeout-lp1 = <3>; // 60s timeout before entering lp2 state (20 secs per unit) (default was 20s)
+        report-rate-lp2 = <640>; // 640ms report rate in LP2 state means 55uA draw rather than default 160ms 174uA draw
+        scroll-angle = <30>; // The default angle (about 47 deg) is too big on toucan2 I think
+        sensitivity = <100>;
+        scroll-sensitivity = <100>;
+
+        filter-settings=<0x0B>;
+        hold-time = <500>;
+
+        zoom;
+        scroll;
+        two-finger-tap;
+        single-tap;
+        press-and-hold;
+        //swipes;
+        three-finger-swipe;
+        three-finger-swipe-throttle-ms = <1200>;
+        switch-xy;
+        invert-scroll-y;
+
     };
 };
 
-&glidepoint_split {
-    device = <&glidepoint>;
-
-    // Optional
-    // input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+&trackpad_split {
+    device = <&tps43_trackpad>;
 };
