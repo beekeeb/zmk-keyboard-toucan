@@ -1,74 +1,107 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/rgb.h>
 
-#define BASE 0
-#define NAV  1
-#define SYM  2
-#define ADJ  3
+#define LAYER_BASE        0
+#define LAYER_SYMBOLS     1
+#define LAYER_NUMBERS     2
+#define LAYER_FUNCTIONS   3
+#define LAYER_NAVIGATION  4
+#define LAYER_MISC        5
+
+#define MEH_KEY  LC(LS(LALT))
+#define HYPR_KEY LC(LS(LA(LGUI)))
+#define CTRLSHFT LC(LSHIFT)
+#define OSSHFT   LG(LSHIFT)
+#define ALTSHFT  LA(LSHIFT)
+#define OSCTRL   LG(LCTRL)
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <125>;
+            bindings = <&kp>, <&kp>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        base {
-            display-name = "BASE";
+        base_layer {
+            display-name = "Base";
             bindings = <
-                &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-                &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-                &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                                &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+   &none  &kp ESC     &kp W        &kp E        &kp R        &lt LAYER_FUNCTIONS T       &lt LAYER_FUNCTIONS Y  &kp U        &kp I        &kp O        &kp BSPC           &none
+   &none  &hm LGUI A  &hm LSHFT S  &hm LCTRL D  &hm LALT F   &lt LAYER_NUMBERS G         &lt LAYER_NUMBERS H    &hm RALT J   &hm RCTRL K  &hm RSHFT L  &hm RGUI P         &none
+   &none  &lt LAYER_MISC Z &kp X   &kp C        &kp V        &kp B                       &kp N                  &kp M        &kp Q        &kp COMMA    &lt LAYER_MISC DOT &none
+                                   &lt LAYER_NAVIGATION CAPS &kp TAB &lt LAYER_SYMBOLS RET  &lt LAYER_SYMBOLS SPACE &mt MEH_KEY DEL &kp MEH_KEY
             >;
         };
 
-        nav {
-            display-name = "NAV";
+        symbols_layer {
+            display-name = "Symbols";
             bindings = <
-                &kp TAB     &kp N1          &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-                &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-                &kp LSHFT   &studio_unlock  &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                                &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+   &none  &kp PLUS          &kp PIPE  &kp QMARK &kp UNDER &kp DQT           &kp EXCL        &kp AT    &kp HASH  &kp DLLR   &kp COLON        &none
+   &none  &mt LCTRL EQUAL   &kp BSLH  &kp FSLH  &kp MINUS &kp SQT           &kp PRCNT       &kp CARET &kp AMPS  &kp ASTRK  &mt LCTRL SEMI   &none
+   &none  &kp TILDE         &kp LPAR  &kp LBRC  &kp LBKT  &kp LT            &kp GT          &kp RBKT  &kp RBRC  &kp RPAR   &kp GRAVE        &none
+                                      &none     &trans    &trans            &kp CTRLSHFT    &kp ALTSHFT &none
             >;
         };
 
-        sym {
-            display-name = "SYM";
+        numbers_layer {
+            display-name = "Numbers";
             bindings = <
-                &kp TAB   &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-                &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-                &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                                          &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+   &none  &none       &kp N7       &kp N8       &kp N9       &none          &none         &none        &none        &none        &none        &none
+   &none  &kp LGUI    &hm LSHFT N4 &hm LCTRL N5 &hm LALT N6  &none          &none         &kp RALT     &kp RCTRL    &kp RSFT     &kp RGUI     &none
+   &none  &kp N0      &kp N1       &kp N2       &kp N3       &none          &none         &none        &none        &none        &none        &none
+                                   &none        &kp OSSHFT   &kp OSCTRL     &kp CTRLSHFT  &kp ALTSHFT  &none
             >;
         };
 
-        adj {
-            display-name = "ADJ";
+        functions_layer {
+            display-name = "Functions";
             bindings = <
-                &mo TAB   &trans &kp F7 &kp F8 &kp F9 &kp F12   &kp C_VOL_DN &kp C_MUTE  &kp C_VOL_UP &trans &trans &kp BSPC
-                &kp LCTRL &trans &kp F4 &kp F5 &kp F6 &kp F11   &trans       &trans      &trans       &trans &trans &trans
-                &bt LSHFT &trans &kp F1 &kp F2 &kp F3 &kp F10   &trans       &trans      &trans       &trans &trans &trans
-                                   &kp LGUI &mo NAV &kp SPACE   &kp RET &mo 2 &kp RALT
+   &none  &kp F12          &kp F7        &kp F8        &kp F9       &none           &none       &none             &none              &none        &none        &none
+   &none  &mt LGUI F11     &mt LSHFT F4  &mt LCTRL F5  &mt LALT F6  &none           &kp C_MUTE  &mt RALT C_VOL_DN &mt RCTRL C_VOL_UP &kp RSFT     &kp RGUI     &none
+   &none  &kp F10          &kp F1        &kp F2        &kp F3       &none           &kp C_PP    &kp C_PREV        &kp C_NEXT         &kp C_STOP   &none        &none
+                                         &none         &trans       &rgb_ug RGB_TOG &trans      &trans            &none
             >;
         };
-        extra_1 {
-                status = "reserved";
+
+        navigation_layer {
+            display-name = "Navigation";
+            bindings = <
+   &none  &kp OSCTRL  &none       &none       &none       &none             &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &none        &none
+   &none  &kp LGUI    &kp LSHFT   &kp LCTRL   &kp LALT    &none             &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &none        &none
+   &none  &none       &none       &none       &none       &none             &none       &none       &none       &none       &none        &none
+                                  &none       &none       &none             &none       &none       &none
+            >;
         };
 
-        extra_2 {
-                status = "reserved";
+        misc_layer {
+            display-name = "Misc/BT";
+            bindings = <
+   &studio_unlock &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3 &bt BT_SEL 4    &none        &none        &none       &none       &none        &none
+   &none          &bt BT_CLR    &bt BT_CLR_ALL  &out OUT_TOG  &out OUT_BLE &out OUT_USB    &none        &none        &none       &none       &none        &none
+   &none          &none         &none           &none         &none        &none           &none        &none        &none       &none       &none        &none
+                                               &none         &bootloader  &sys_reset      &sys_reset   &bootloader  &none
+            >;
         };
 
-        extra_3 {
-                status = "reserved";
-        };
+        extra_1 { status = "reserved"; };
+        extra_2 { status = "reserved"; };
     };
 };
